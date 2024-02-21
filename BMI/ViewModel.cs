@@ -8,10 +8,10 @@ namespace BMI
         private Model _model;
 
         [ObservableProperty]
-        private double _cmHeight;
+        private double _feetHeight;
 
         [ObservableProperty]
-        private double _kgWeight;
+        private double _poundsWeight;
 
         [ObservableProperty]
         private double _bmi;
@@ -24,9 +24,9 @@ namespace BMI
         [RelayCommand]
         private void CalculateBMI()
         {
-            double meterH = CmHeight / 100;
-
-            double originalBmi = _model.Calc(meterH, KgWeight);
+            double meterH = FeetHeight / 3.2808;
+            double kgW = PoundsWeight / 2.2046;
+            double originalBmi = _model.Calc(meterH, kgW);
             
             // Round the BMI to 2 decimal places
             Bmi = Math.Round(originalBmi, 2);
